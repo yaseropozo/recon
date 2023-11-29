@@ -1,14 +1,7 @@
 import sys
 
-
-if len(sys.argv) < 3:
-    print("Usage: python script_name.py organization_name wordlist")
-    sys.exit(1)
-
-base_domain = sys.argv[1]
-words_file_path =  sys.argv[2]
-def generate_fake_domains(word_list, base_domain):
-    fake_domains = [f"{word}.{base_domain}" for word in word_list]
+def generate_fake_domains(word_list, domains):
+    fake_domains = [f"{word}.{domain}" for domain in domains for word in word_list]
     return fake_domains
 
 def write_to_file(file_path, data):
@@ -16,15 +9,18 @@ def write_to_file(file_path, data):
         file.write('\n'.join(data))
 
 if __name__ == "__main__":
-    
-    output_file_path = base_domain+"_fake_subdomains.txt"
+    words_file_path =  sys.argv[1]
+    # Read the list of domains from the file
+    with open("domains.txt", 'r') as domain_file:
+        domains = [line.strip() for line in domain_file]
 
     # Read the list of words from the file
-    with open(words_file_path, 'r') as file:
-        word_list = [line.strip() for line in file]
+    with open(words_file_path, 'r') as wordlist_file:
+        word_list = [line.strip() for line in wordlist_file]
 
-    # Generate fake domains
-    fake_domains = generate_fake_domains(word_list, base_domain)
+    # Generate fake domains for each domain in the list
+    all_fake_domains = generate_fake_domains(word_list, domains)
 
-    # Write the fake domains to the output file
-    write_to_file(output_file_path, fake_domains)
+    # Write all fake domains to a single output file
+    output_file_path = "all_fake_subdomains.txt"
+    write_to_file(output_file_path, all_fake_domains)

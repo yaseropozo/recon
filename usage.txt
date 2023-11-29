@@ -1,0 +1,4 @@
+python .\get_all_tlds.py
+python .\subdomains_collecter.py ihost.com
+
+
