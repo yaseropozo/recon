@@ -1,4 +1,4 @@
-python .\get_all_tlds.py
-python .\subdomains_collecter.py ihost.com
+$ get_domains.sh org_name
+  ex: get_domains.sh IBM
 
 
