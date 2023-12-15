@@ -36,9 +36,9 @@ def download_tlds():
         zero_dot_tldsl = "\n".join(zero_dot_tlds)
         with open("tlds-1.txt", "wb") as file:
             file.write(zero_dot_tldsl.encode('utf-8'))
-        return True
+        return 1
     else:
-        return False
+        return 0
         
         
         
