@@ -53,7 +53,7 @@ def Start():
             N+=1
         else:
             pass
-    print(f"Subdomains Found {N}")
+#    print(f"Subdomains Found {N}")
 Start()
     
 
