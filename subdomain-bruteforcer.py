@@ -9,9 +9,10 @@ def write_to_file(file_path, data):
         file.write('\n'.join(data))
 
 if __name__ == "__main__":
+    domains_file =  sys.argv[1]
     words_file_path =  sys.argv[1]
     # Read the list of domains from the file
-    with open("domains.txt", 'r') as domain_file:
+    with open(domains_file, 'r') as domain_file:
         domains = [line.strip() for line in domain_file]
 
     # Read the list of words from the file
@@ -21,6 +22,4 @@ if __name__ == "__main__":
     # Generate fake domains for each domain in the list
     all_fake_domains = generate_fake_domains(word_list, domains)
 
-    # Write all fake domains to a single output file
-    output_file_path = "all_fake_subdomains.txt"
-    write_to_file(output_file_path, all_fake_domains)
+    print(all_fake_domains)
