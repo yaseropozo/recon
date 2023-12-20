@@ -13,6 +13,7 @@ if [ ! -f "$domains_file" ]; then
     exit 1
 fi
 
+# Read each domain from the file and run the Python script
 while IFS= read -r domain || [[ -n "$domain" ]]; do
     output_file="temp_psubs_$domain.txt"
     echo "Running subdomains_collector.py for domain: $domain"
@@ -24,7 +25,7 @@ cat "temp_psubs_"* | grep -v @ > "psubs_$1.txt"
 
 cat "temp_psubs_"* | grep @ > "emails_psubs_$1.txt"
 
-python3 subdomain-bruteforcer.py "$domains_file" > "fakesubs_$1"
+python3 subdomain-bruteforcer.py "$domains_file" "$2" > "fakesubs_$1"
 
 cat "psubs_$1.txt" "fakesubs_$1" | sort | uniq > "allsubs_$1"
 
