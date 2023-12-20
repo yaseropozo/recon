@@ -27,7 +27,7 @@ async def check_subdomain(subdomain, resolver):
     
     valid_ip = await is_host_reachable(subdomain, resolver)
     if valid_ip:
-        print(f"{subdomain}:{valid_ip} using resolver: {resolver}")
+        print(f"{subdomain}:{valid_ip}")
 
 async def main(subdomains, resolvers):
     tasks = [check_subdomain(subdomain, random.choice(resolvers)) for subdomain in subdomains]
