@@ -10,7 +10,7 @@ def write_to_file(file_path, data):
 
 if __name__ == "__main__":
     domains_file =  sys.argv[1]
-    words_file_path =  sys.argv[1]
+    words_file_path =  sys.argv[2]
     # Read the list of domains from the file
     with open(domains_file, 'r') as domain_file:
         domains = [line.strip() for line in domain_file]
