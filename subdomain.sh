@@ -15,7 +15,7 @@ fi
 
 # Read each domain from the file and run the Python script
 while IFS= read -r domain || [[ -n "$domain" ]]; do
-    output_file="temp_psubs_$domain.txt"
+    output_file="temp_psubs_$1"
     echo "Running subdomains_collector.py for domain: $domain"
     python3 subdomains_collector.py "$domain" >> "$output_file" 2>&1
     echo "Output saved to: $output_file"
