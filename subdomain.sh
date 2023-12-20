@@ -25,7 +25,9 @@ cat "temp_psubs_"* | grep -v @ > "psubs_$1.txt"
 
 cat "temp_psubs_"* | grep @ > "emails_psubs_$1.txt"
 
-python3 subdomain-bruteforcer.py "$domains_file" "$2" > "fakesubs_$1"
+python3 subdomain-bruteforcer.py "$domains_file" "$2" | tr -d "['\",]" | tr ' ' '\n' > "fakesubs_$1"
+wc "fakesubs_$1"
+wc "psubs_$1.txt"
 
 cat "psubs_$1.txt" "fakesubs_$1" | sort | uniq > "allsubs_$1"
 
