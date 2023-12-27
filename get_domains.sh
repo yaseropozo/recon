@@ -11,6 +11,8 @@ fi
 
 
 # Run get_all_tlds.py and capture the result in a variable
+mkdir $1
+cd $1
 result=$(python3 get_all_tlds.py)
 
 # Check if get_all_tlds.py was successful
@@ -24,9 +26,6 @@ fi
 # Run org-domains.py with sysarg1 and the copied files
 if python3 org-domains.py $1 > "${1}-domains.txt"; then
     echo "org-domains.py succeeded"
-
-    # Cat the file and create JSON output
-    jq -R -s -c '{ "domains": (split("\n") | map(select(length > 0))) }' "${1}-domains.txt" > "${1}-domains.json"
     exit 0
 else
     echo "org-domains.py failed"
