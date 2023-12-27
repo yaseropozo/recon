@@ -27,6 +27,6 @@ cat results/$1/"$output_file" | grep @ > "emails_psubs.txt"
 
 python3 subdomain-bruteforcer.py "$domains_file" "$2" | tr -d "['\",]" | tr ' ' '\n' > results/$1/fakesubs.txt
 
-cat "psubs.txt" results/$1/fakesubs.txt | sort | uniq > results/$1/allsubs.txt
+cat results/$1/psubs.txt results/$1/fakesubs.txt | sort | uniq > results/$1/allsubs.txt
 
 python3 massdns.py results/$1/allsubs.txt "$3" | tee -a results/$1/subs_ip.txt
