@@ -3,7 +3,7 @@ import requests
 import time
 import re
 
-
+sys.setrecursionlimit(10000)
 if len(sys.argv) < 2:
     print("Usage: python script_name.py organization_name")
     sys.exit(1)
