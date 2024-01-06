@@ -44,4 +44,4 @@ cat "$psubs" "$results_dir/fakesubs.txt" | sort | uniq > "$results_dir/allsubs.t
 
 # Run massdns.py and append results to subs_ip.txt
 python3 massdns.py "$results_dir/allsubs.txt" "$dns_resolver" | tee -a "$results_dir/subs_ip.txt"
- 
+  
