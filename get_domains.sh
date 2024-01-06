@@ -11,8 +11,10 @@ fi
 
 
 # Run get_all_tlds.py and capture the result in a variable
-mkdir $1
-cd $1
+pwd
+mkdir results/$1
+pwd
+
 result=$(python3 get_all_tlds.py)
 
 # Check if get_all_tlds.py was successful
@@ -24,10 +26,11 @@ if [ $? -ne 0 ]; then
 fi
 
 # Run org-domains.py with sysarg1 and the copied files
-if python3 tlds.py $1 > "${1}-domains.txt"; then
+if python3 tlds.py $1 > results/$1/domains.txt; then
     echo "org-domains.py succeeded"
     exit 0
 else
     echo "org-domains.py failed"
     exit 1
 fi
+  
