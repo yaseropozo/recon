@@ -24,7 +24,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Run org-domains.py with sysarg1 and the copied files
-if python3 org-domains.py $1 > "${1}-domains.txt"; then
+if python3 tlds.py $1 > "${1}-domains.txt"; then
     echo "org-domains.py succeeded"
     exit 0
 else
