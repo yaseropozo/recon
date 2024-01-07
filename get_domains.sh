@@ -26,7 +26,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Run org-domains.py with sysarg1 and the copied files
-if python3 tlds.py $1 > results/$1/domains.txt; then
+if python3 tlds.py $1 | tr 'A-Z' 'a-z' | grep -vE '^\.' | grep -vE '\.$' | sort | uniq > results/$1/domains.txt; then
     echo "org-domains.py succeeded"
     exit 0
 else
