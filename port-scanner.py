@@ -29,7 +29,7 @@ def parse_ports_argument(argument):
         sys.exit(1)
 
 if __name__ == "__main__":
-    if len(sys.argv) < 4:
+    if len(sys.argv) < 2:
         print_usage_and_exit()
 
     subdomains_file = sys.argv[1]
