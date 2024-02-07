@@ -23,4 +23,7 @@ if [ "$mode" == "range" ] || [ "$mode" == "list" ]; then
 fi
 
 # Run the port scanner script
-python3 "port-scanner.py" "$results_dir/subs_ip.txt" "$mode" "$ports"
+python3 "port-scanner.py" "$results_dir/subs_ip.txt" "$mode" "$ports" > "$results_dir/ports.txt"
+
+awk -F':' '{print $1":"$2}' "$results_dir/ports.txt"  > "$results_dir/portsonly" && python3 live-subdomain.py "$results_dir/portsonly"                                                                                                                    
+   
