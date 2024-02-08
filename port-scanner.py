@@ -6,9 +6,9 @@ def port_scan(subdomain, target_port):
 
 
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(1)  # Adjust timeout as needed
+        sock.settimeout(1)  
 
-        target_host = subdomain  # Change 'yourdomain.com' to your actual domain
+        target_host = subdomain  
 
         result = sock.connect_ex((target_host, port))
 
@@ -64,7 +64,7 @@ if __name__ == "__main__":
         with open(subdomains_file, "r") as file:
             subdomains_list = [line.strip() for line in file]
 
-        target_ports = [80, 443]  # Default ports; you can customize this list
+        target_ports = [80, 443]  
         for port in target_ports: 
             for line in subdomains_list:
                 subdomain, ip_address = line.split(":")
