@@ -93,3 +93,4 @@ if __name__ == "__main__":
         brute(myList_new, wordlist, numOfThreads)
     except KeyboardInterrupt:
         sys.exit()
+ 
