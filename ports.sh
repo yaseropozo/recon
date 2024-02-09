@@ -30,14 +30,15 @@ if [ "$mode" == "range" ] || [ "$mode" == "list" ]; then
     fi
     ports="$3"
     echo "$3"
-    python3 "port-scanner.py" "$results_dir/subs_ip.txt" "$mode" "$ports" > "$results_dir/ports.txt"
+    python "port-scanner.py" "$results_dir/subs_ip.txt" "$mode" "$ports" > "$results_dir/ports.txt"
     cat "$results_dir/ports.txt"
-    awk -F':' '{print $1":"$2}' "$results_dir/ports.txt"  > "$results_dir/portsonly" && python3 live-subdomain.py "$results_dir/portsonly"                                                                                                                                  
+    awk -F':' '{print $1":"$2}' "$results_dir/ports.txt"  > "$results_dir/portsonly" && python live-subdomain.py "$results_dir/portsonly"  | tee -a "$results_dir/lives"      
+    read -n 1 -s input                                                                                                                          
     exit 0
 fi
 # Run the port scanner script
-python3 "port-scanner.py" "$results_dir/subs_ip.txt" "$mode" > "$results_dir/ports.txt" 
+python "port-scanner.py" "$results_dir/subs_ip.txt" "$mode" > "$results_dir/ports.txt" 
 cat "$results_dir/ports.txt"
-awk -F':' '{print $1":"$2}' "$results_dir/ports.txt"  > "$results_dir/portsonly" && python3 live-subdomain.py "$results_dir/portsonly" > lives                                                                                                                                    
-
+awk -F':' '{print $1":"$2}' "$results_dir/ports.txt"  > "$results_dir/portsonly" && python live-subdomain.py "$results_dir/portsonly" | tee -a "$results_dir/lives"                                                                                                                                    
+read -n 1 -s input
 
